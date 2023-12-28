@@ -70,6 +70,18 @@ const Menu = () => {
   );
 };
 const Footer = () => {
+  const hour = new Date().getHours();
+  const openHour = 10;
+  const closeHour = 22;
+
+  const isOpen = hour >= openHour && hour < closeHour;
+  console.log(isOpen);
+
+  //   if (hour >= openHour && hour < closeHour) {
+  //     alert("We are open");
+  //   } else {
+  //     alert("Sorry,  We have closed");
+  //   }
   return <footer>{new Date().toLocaleTimeString()} We are open</footer>;
 };
 
