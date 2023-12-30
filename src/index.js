@@ -66,15 +66,18 @@ const Header = () => {
   );
 };
 const Menu = () => {
+  const pizzas = pizzaData;
+  const numPizzas = pizzas.length;
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-
-      <ul className="pizzas">
-        {pizzaData.map((pizza) => (
-          <Pizza pizzaObj={pizza} key={pizza.name} />
-        ))}
-      </ul>
+      {numPizzas > 0 && (
+        <ul className="pizzas">
+          {pizzas.map((pizza) => (
+            <Pizza pizzaObj={pizza} key={pizza.name} />
+          ))}
+        </ul>
+      )}
     </main>
   );
 };
@@ -95,7 +98,7 @@ function Pizza(props) {
 
 const Footer = () => {
   const hour = new Date().getHours();
-  const openHour = 10;
+  const openHour = 2;
   const closeHour = 22;
 
   const isOpen = hour >= openHour && hour < closeHour;
@@ -108,8 +111,12 @@ const Footer = () => {
   //   }
   return (
     <footer className="footer">
-      {new Date().toLocaleTimeString()}{" "}
-      <p>{isOpen ? "We are open" : "We are closed"}</p>
+      {isOpen && (
+        <div className="order">
+          <p>We are open until 22:00.</p>
+          <button className="btn">Order Now</button>
+        </div>
+      )}
     </footer>
   );
 };
