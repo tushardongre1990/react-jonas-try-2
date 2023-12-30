@@ -85,8 +85,8 @@ const Header = () => {
 
 const Menu = () => {
   const pizzas = pizzaData;
-  // const numPizzas = pizzas.length;
-  const numPizzas = 0;
+  const numPizzas = pizzas.length;
+  // const numPizzas = 0;
   return (
     <main className="menu">
       <h2>Our Menu</h2>
@@ -106,6 +106,10 @@ const Menu = () => {
 
 function Pizza(props) {
   console.log(props);
+
+  if (props.pizzaObj.soldOut) {
+    return null;
+  }
   return (
     <li className="pizza">
       <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
@@ -120,7 +124,7 @@ function Pizza(props) {
 
 const Footer = () => {
   const hour = new Date().getHours();
-  const openHour = 12;
+  const openHour = 2;
   const closeHour = 22;
 
   const isOpen = hour >= openHour && hour < closeHour;
