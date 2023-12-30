@@ -90,13 +90,20 @@ const Menu = () => {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
+
       {/* Conditional Rendering with ternary operator */}
       {numPizzas > 0 ? (
-        <ul className="pizzas">
-          {pizzas.map((pizza) => (
-            <Pizza pizzaObj={pizza} key={pizza.name} />
-          ))}
-        </ul>
+        <>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero,
+            eaque.
+          </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => (
+              <Pizza pizzaObj={pizza} key={pizza.name} />
+            ))}
+          </ul>
+        </>
       ) : (
         <p>We are still working on our men. Please come back later.</p>
       )}
