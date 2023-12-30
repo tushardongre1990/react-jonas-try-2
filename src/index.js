@@ -138,16 +138,22 @@ const Footer = () => {
   return (
     <footer className="footer">
       {isOpen ? (
-        <div className="order">
-          <p>We are open until {closeHour}.</p>
-          <button className="btn">Order Now</button>
-        </div>
+        <Order closeHour={closeHour} />
       ) : (
         <p>
           We are happy to welcome you between {openHour}:00 & {closeHour}:00
         </p>
       )}
     </footer>
+  );
+};
+
+const Order = ({ closeHour }) => {
+  return (
+    <div className="order">
+      <p>We are open until {closeHour}.</p>
+      <button className="btn">Order Now</button>
+    </div>
   );
 };
 
