@@ -65,18 +65,40 @@ const Header = () => {
     </header>
   );
 };
+// const Menu = () => {
+//   const pizzas = pizzaData;
+//   const numPizzas = pizzas.length;
+//   return (
+//     <main className="menu">
+//       <h2>Our Menu</h2>
+//       {/* Conditional Rendering with short circuiting */}
+//       {numPizzas > 0 && (
+//         <ul className="pizzas">
+//           {pizzas.map((pizza) => (
+//             <Pizza pizzaObj={pizza} key={pizza.name} />
+//           ))}
+//         </ul>
+//       )}
+//     </main>
+//   );
+// };
+
 const Menu = () => {
   const pizzas = pizzaData;
-  const numPizzas = pizzas.length;
+  // const numPizzas = pizzas.length;
+  const numPizzas = 0;
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      {numPizzas > 0 && (
+      {/* Conditional Rendering with ternary operator */}
+      {numPizzas > 0 ? (
         <ul className="pizzas">
           {pizzas.map((pizza) => (
             <Pizza pizzaObj={pizza} key={pizza.name} />
           ))}
         </ul>
+      ) : (
+        <p>We are still working on our men. Please come back later.</p>
       )}
     </main>
   );
@@ -98,7 +120,7 @@ function Pizza(props) {
 
 const Footer = () => {
   const hour = new Date().getHours();
-  const openHour = 2;
+  const openHour = 12;
   const closeHour = 22;
 
   const isOpen = hour >= openHour && hour < closeHour;
@@ -111,11 +133,15 @@ const Footer = () => {
   //   }
   return (
     <footer className="footer">
-      {isOpen && (
+      {isOpen ? (
         <div className="order">
-          <p>We are open until 22:00.</p>
+          <p>We are open until {closeHour}.</p>
           <button className="btn">Order Now</button>
         </div>
+      ) : (
+        <p>
+          We are happy to welcome you between {openHour}:00 & {closeHour}:00
+        </p>
       )}
     </footer>
   );
